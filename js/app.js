@@ -34,7 +34,7 @@ Enemy.prototype.update = function(dt) {
     // all computers.
 
     this.x += (X_INCREMENT * dt * this.speed);
-    console.log('enemy x = ', this.x, 'enemy y = ', this.y);    
+    //console.log('enemy x = ', this.x, 'enemy y = ', this.y);    
     if(this.x > 480){
         var locations = [80.8 , 161.6 , 242.40];
         this.speed = Math.random() * 5;
@@ -78,16 +78,22 @@ Player.prototype.handleInput = function(direction){
     console.log("Handle input");
     switch(direction){
     case 'left':
-    this.x -= X_INCREMENT;
+    if(this.x > 0){
+        this.x -= X_INCREMENT;
+    }
     break;
     case 'up':
     this.y -= Y_INCREMENT;
     break;
     case 'right':
-    this.x += X_INCREMENT;
+    if(this.x < 404){
+        this.x += X_INCREMENT;    
+    }    
     break;
     case 'down':
-    this.y += Y_INCREMENT;
+    if(this.y < 424){
+        this.y += Y_INCREMENT;
+    }
     break;    
 
     }
